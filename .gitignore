@@ -3,3 +3,4 @@ venv/
 progress.json
 github_profile.json
 .env
+.pytest_cache/
