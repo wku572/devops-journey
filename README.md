@@ -1,5 +1,7 @@
 # DevOps Journey
 
+![CI](https://github.com/wku572/devops-journey/actions/workflows/ci.yml/badge.svg)
+
 My 90-day plan to learn Linux, Automation, DevOps, and Cloud, built in public.
 
 ## Progress

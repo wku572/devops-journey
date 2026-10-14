@@ -15,7 +15,7 @@ progress = {"Linux": True, "Bash": True, "Git": True, "Python": True, "Docker": 
 
 # Functions
 def percent_done(data):
-	return sum(100 for done on data.values() if done)
+    return sum(1 for done in data.values() if done)
 
 def count_done(data):
     return sum(1 for done in data.values() if done)
