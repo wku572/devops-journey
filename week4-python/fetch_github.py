@@ -15,6 +15,7 @@ def fetch_profile(username):
     response.raise_for_status()
     return response.json()
 
+
 def main():
     username = sys.argv[1] if len(sys.argv) > 1 else "wku572"
 
