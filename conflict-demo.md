@@ -1,1 +1,1 @@
-Favorite tool: Docker
+Favorite tools: Docker and Git
