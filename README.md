@@ -7,13 +7,14 @@ My 90-day plan to learn Linux, Automation, DevOps, and Cloud, built in public.
 - [x] Week 2: Bash scripting (backup script with logging and cron)
 - [x] Week 3: Git and GitHub (SSH, branches, pull requests, merge conflicts)
 - [x] Week 4: Python basics (API script with requests and venv)
-- [ ] Weeks 5-8: Docker, CI/CD, automation project
+- [ ] Weeks 5-8: Docker and Compose done; CI/CD and automation project next
 - [ ] Weeks 9-12: Cloud, Terraform, portfolio project
 
 ## What's inside
 - `linux-cheatsheet.md`: the Linux commands I use most, in my own words
 - `git-cheatsheet.md`: the Git commands and the branch and pull request workflow
 - `week2-bash/`: Bash scripts, including a backup script with logging
+- `week6-compose/`: a Flask app and Postgres database run with Docker Compose
 - `week4-python/`: Python scripts, including one that fetches data from the GitHub API
 
 ## About me
