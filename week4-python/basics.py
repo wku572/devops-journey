@@ -14,11 +14,15 @@ for skill in skills:
 progress = {"Linux": True, "Bash": True, "Git": True, "Python": True, "Docker": False}
 
 # Functions
+
+
 def percent_done(data):
     return sum(1 for done in data.values() if done)
 
+
 def count_done(data):
     return sum(1 for done in data.values() if done)
+
 
 done = count_done(progress)
 print(f"{done} of {len(progress)} skills done")
