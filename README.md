@@ -13,7 +13,10 @@ My 90-day plan to learn Linux, Automation, DevOps, and Cloud, built in public.
 - [x] Week 6: Docker Compose (Flask app and Postgres)
 - [x] Week 7: CI/CD with GitHub Actions (lint, tests, Docker build)
 - [x] Week 8: Automation project (n8n workflow with schedule and Telegram)
-- [ ] Weeks 9-12: Cloud, Terraform, portfolio project
+- [ ] Week 9: Cloud fundamentals (free labs and notes)
+- [x] Week 10: Terraform (Docker provider, variables, outputs, CI checks)
+- [x] Week 11: Portfolio project (Flask and Postgres deployed with Terraform)
+- [ ] Week 12: Polish and certification plan
 
 ## What's inside
 - `linux-cheatsheet.md` and `git-cheatsheet.md`: commands and workflows in my own words
@@ -21,6 +24,8 @@ My 90-day plan to learn Linux, Automation, DevOps, and Cloud, built in public.
 - `week4-python/`: a GitHub API script with tests and a Dockerfile
 - `week6-compose/`: a Flask app and Postgres database run with Docker Compose
 - `week8-n8n/`: self-hosted n8n and an exported workflow that sends a daily Telegram report
+- `week10-terraform/`: Terraform basics with variables, validation, and outputs
+- `week11-portfolio/`: Flask and Postgres deployed with Terraform, with an architecture diagram
 - `.github/workflows/ci.yml`: pipeline that lints, tests, and builds images on every push
 
 ## How the pipeline works
