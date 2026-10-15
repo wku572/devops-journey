@@ -22,7 +22,7 @@ jobs:
         run: pip install flake8
 
       - name: Lint Python
-        run: flake8 --max-line-length=100 week4-python week6-compose
+        run: flake8 --max-line-length=100 week4-python week6-compose week11-portfolio/app
 
       - name: Check Bash syntax
         run: |
@@ -45,6 +45,29 @@ jobs:
       - name: Run tests
         run: pytest week4-python -v
 
+  terraform:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dir: [week10-terraform, week11-portfolio/terraform]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+
+      - name: Format check
+        run: terraform fmt -check -recursive
+        working-directory: ${{ matrix.dir }}
+
+      - name: Init
+        run: terraform init -backend=false
+        working-directory: ${{ matrix.dir }}
+
+      - name: Validate
+        run: terraform validate
+        working-directory: ${{ matrix.dir }}
+
   docker-build:
     runs-on: ubuntu-latest
     needs: [lint, test, terraform]
@@ -57,21 +80,5 @@ jobs:
       - name: Build compose web image
         run: docker build -t compose-web week6-compose
 
-  terraform:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: hashicorp/setup-terraform@v3
-
-      - name: Format check
-        run: terraform fmt -check -recursive
-        working-directory: week10-terraform
-
-      - name: Init
-        run: terraform init -backend=false
-        working-directory: week10-terraform
-
-      - name: Validate
-        run: terraform validate
-        working-directory: week10-terraform
+      - name: Build portfolio web image
+        run: docker build -t portfolio-web week11-portfolio/app

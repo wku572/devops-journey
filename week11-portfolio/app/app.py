@@ -37,7 +37,7 @@ def index():
             count = cur.fetchone()[0]
     finally:
         conn.close()
-    return f"Hello from Docker Compose! This page has been visited {count} times.\n"
+    return f"Hello from Terraform! This page has been visited {count} times.\n"
 
 
 if __name__ == "__main__":
