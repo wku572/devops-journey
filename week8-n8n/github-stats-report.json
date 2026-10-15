@@ -1,0 +1,176 @@
+{
+  "name": "GitHub stats report",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "4252792a-683c-4c6b-b2ea-1f53a737dcb0",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": " https://api.github.com/users/wku572",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "8a441009-e5fc-46bc-a805-0a43671519d7",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "xVyyRA0fQe8PQt7E",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "44485215-c17f-43d3-afd3-191d88193734",
+              "name": "username",
+              "value": "={{ $json.login }}",
+              "type": "string"
+            },
+            {
+              "id": "abec1bdf-38f4-4da0-aed5-4c5ccbadd79a",
+              "name": "public_repos",
+              "value": "={{ $json.public_repos }}",
+              "type": "number"
+            },
+            {
+              "id": "6b47335f-632c-40dd-b6f5-46568eea6df4",
+              "name": "followers",
+              "value": "={{ $json.followers }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        448,
+        0
+      ],
+      "id": "b0802fef-b2b8-4a23-9ca5-9f2a34d2c6b7",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        240,
+        176
+      ],
+      "id": "4c292fa6-aafa-46fe-b65c-0e91f617bb30",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "chatId": "331660736",
+        "text": "=GitHub stats for {{ $json.username }}: {{ $json.public_repos }} public repos, {{ $json.followers }} followers",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        384,
+        288
+      ],
+      "id": "37b1ffd2-5699-45b2-8d96-55e4dae93d43",
+      "name": "Send a text message",
+      "webhookId": "064b5512-fc5d-4db4-9e91-43293ada50ee",
+      "credentials": {
+        "telegramApi": {
+          "id": "2HegOqskchorIzQd",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "70fd0e12-cb12-40ef-8ba5-01fa4fbae195",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7e34a6bb1438507d67b6363986da5cf950a6d6331955d25406a79d25c99d37ec"
+  },
+  "nodeGroups": [],
+  "id": "Av0ORKtU6RgHABpd",
+  "tags": []
+}
