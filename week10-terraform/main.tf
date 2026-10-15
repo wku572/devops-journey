@@ -10,16 +10,16 @@ terraform {
 provider "docker" {}
 
 resource "docker_image" "nginx" {
-  name         = "nginx:latest"
+  name         = "nginx:${var.nginx_tag}"
   keep_locally = true
 }
 
 resource "docker_container" "web" {
-  name  = "tf-nginx"
+  name  = var.container_name
   image = docker_image.nginx.image_id
 
   ports {
     internal = 80
-    external = 8083
+    external = var.host_port
   }
 }
