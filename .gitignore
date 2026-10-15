@@ -4,3 +4,6 @@ progress.json
 github_profile.json
 .env
 .pytest_cache/
+.terraform/
+*.tfstate
+*.tfstate.*
